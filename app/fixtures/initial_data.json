@@ -1,0 +1,24 @@
+[
+    {"model": "peak.peak",
+    "pk": 1,
+    "fields":{
+        "id": 1,
+        "name": "mont-blanc",
+        "altitude": 4809.0,
+        "latitude": 45.832622,
+        "longitude": 6.865175,
+        "point": "SRID=4326;POINT (6.865175 45.832622)"
+    }
+    },
+    {"model": "peak.peak",
+    "pk": 2,
+    "fields":{
+        "id": 2,
+        "name": "vignemale",
+        "altitude": 3299.0,
+        "latitude": 42.773837,
+        "longitude": -0.147713,
+        "point": "SRID=4326;POINT (-0.147713 42.773837)"
+    }
+    }
+]

@@ -1,43 +1,35 @@
-[![Test-Lint-Format](https://github.com/aurelpere/python-mfi-bbox-peak/actions/workflows/main.yml/badge.svg)](https://github.com/aurelpere/python-mfi-bbox-peak/actions/workflows/main.yml)
 
 # utilisation 
 <br>
 
 `git clone https://github.com/aurelpere/python-mfi-bbox-peak.git`
->telecharger le depot
-<br>
-
+>download repository
 <br>
 
 `cd python-mfi-bbox-peak && docker-compose up`
->déployer le serveur django (docker et docker-compose doivent être installés sur votre ordinateur)
-<br>
-
+>deploy django server locally (docker and docker compose must be installed)
 <br>
 
 `localhost:8000`
->Entrer cette adresse dans votre navigateur internet pour accéder à l'interface du  pour ajouter des points, les éditer, les supprimer et définir une bounding box
-<br>
-<br>
-
+>enter this adress in your browser to get the website (django frontend). you can retrieve the list of peaks, add some, edit and delete through an interface querying the /peak/ rest api endpoint
 <br>
 
 `localhost:8000/peak`
->le endpoint  pour consulter la liste des peaks (GET) ou en ajouter (POST) par l'interface de django-rest-framework-gis
+>CRUD endpoint (backend django). django-rest-framework-gis module provides a web interface on this adress if you enter it in your browser. fixtures have been added to django boot, so you should see vignemale and mont-blanc records in the list
 <br>
 
->note: pour ajouter un peak, bien penser à définir le champ "point" avec la syntaxe `SRID=4326;POINT (<longitude> <latitude>)` ou avec la syntaxe `{"type": "Point", "coordinates": [<longitude>, <latitude>]}` en remplacant <longitude> par la longitude (wgs84) et <latitude> par la latitude (wgs84) avec 6 décimales
+>note: to add a peak, the "point" field must follow this syntax : `SRID=4326;POINT (<longitude> <latitude>)` or `{"type": "Point", "coordinates": [<longitude>, <latitude>]}`. <longitude> and <latitude> must be provided with 6 decimals in wgs84 coordinates
 <br>
 
+`localhost:8000/peak/?in_bbox=<min lon>,<min lat>,<max lon>,<max lat>`
+>endpoint for getting peaks in the bounding box provided
 <br>
 
-`localhost:8000/peaks/?in_bbox=<min lon>,<min lat>,<max lon>,<max lat>`
->le endpoint  pour consulter la liste des peaks (GET) avec une bounding box (min Lon, min Lat, max Lon, max Lat), le endpoint
-<br>
-
+`localhost:8000/peak/?in_bbox=6.0,45.0,7.0,46.0`
+>if you enter this adress in your browser, you should get the records in the bounding box provided, which is mont-blanc record only
 <br>
 
 `make test`
->pour lancer les tests (1 test de création d'un enregistrement dans la bdd 5 tests CRUD sur le endpoint /peak). Ils sont automatiquement lancés au déploiement du code sur le dépot github (voir les fichiers dans le sous-répertoire tests). Attention à bien supprimer les container et volumes docker précédemment crées.
+>this command launches tests (1 test for save a record in the database 5 tests for CRUD on th /peak/ endpoint). See files in /tests subfolder for details. The tests are automatically launched when deploying code on github repository through github actions. The status badge in this readme at the top provides the results of the tests.
 <br>
 
