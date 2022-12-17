@@ -1,0 +1,33 @@
+
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+{% block content %}
+<table class="table table-striped table-bordered table-sm">
+    <thead class="thead-dark">
+    <tr>
+        <th>Peak id</th>
+        <th>Peak name</th>
+        <th>Peak altitude</th>
+        <th>Peak longitude (wgs84)</th>
+        <th>Peak latitude (wgs84)</th>
+    </tr>
+    </thead>
+   <tbody>
+{% for peak in peaks %}
+    <tr>
+        <td>{{ peak.id }}</td>
+        <td>{{ peak.name }}</td>
+        <td>{{ peak.altitude }}</td>
+        <td>{{ peak.longitude }}</td>
+        <td>{{ peak.latitude }}</td>
+        <td>
+            <a href="/edit/{{ peak.id }}"><span class="glyphicon glyphicon-pencil" >Edit</span></a>
+            <a href="/delete/{{ peak.id }}">Delete</a>
+        </td>
+    </tr>
+{% endfor %}
+    </tbody>
+</table>
+<br>
+<br>
+{% endblock %}

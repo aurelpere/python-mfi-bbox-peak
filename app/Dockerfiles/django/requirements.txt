@@ -1,0 +1,11 @@
+django
+psycopg2-binary
+djangorestframework
+djangorestframework-gis
+django-cors-headers
+django-filter
+pytest
+pytest-django
+geojson
+requests
+django-bootstrap5

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    
+    {% load django_bootstrap5 %}
+
+    {% bootstrap_css %}
+
+    {% bootstrap_javascript %}
+
+    {% bootstrap_messages %}
+
+    <title>MFI Peak test</title>
+</head>
+<body>
+            <div  class="container">
+    <br>
+                    <a href="/" class="btn btn-primary">Home</a></center>
+                   <a href="/create" class="btn btn-primary">Add new mountain peak</a></center>
+                   <a href="/show" class="btn btn-primary">List mountain peak records</a></center>
+                   <a href="/bbox" class="btn btn-primary">Select mountain peak records with bounding box</a></center>
+                <br>
+                <br>
+            </div>
+            <<div class="col-sm-2">
+            </div>
+            <div  class="container" class="col-sm-10">
+    {% block content %}
+
+    {% endblock content %}
+            </div>
+</body>
+</html>

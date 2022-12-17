@@ -1,0 +1,17 @@
+#!/bin/bash
+set -o errexit
+set -o pipefail
+set -o nounset
+python /app/manage.py collectstatic --noinput
+python /app/manage.py makemigrations
+python /app/manage.py migrate
+#CONTAINER_ALREADY_STARTED="CONTAINER_ALREADY_STARTED_PLACEHOLDER"
+#if [ ! -e $CONTAINER_ALREADY_STARTED ]; then
+#    touch $CONTAINER_ALREADY_STARTED
+#    echo "-- First container startup --"
+#    echo "from django.contrib.auth import get_user_model;User = get_user_model();User.objects.filter(email='admin@admin.com').delete(); User.objects.create_superuser('admin', 'admin@admin.com', 'admin')" | python /app/manage.py shell
+python /app/manage.py createsuperuser --no-input --username admin --email admin@example.com || true;
+
+#/usr/local/bin/gunicorn app.wsgi:application --bind 0.0.0.0:8000 --chdir=/app
+python /app/manage.py runserver 0.0.0.0:8000
+

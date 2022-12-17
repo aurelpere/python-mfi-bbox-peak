@@ -1,0 +1,23 @@
+name : Test-Lint-Format
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: set up python 3.8 
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.8
+    - name: Install dependencies
+      run: |
+        make install 
+    - name: Lint with pylint
+      run: |
+        make lint
+    - name : format with yapf
+      run: |
+        make format
+    - name: test with pytest
+      run: |
+        make test

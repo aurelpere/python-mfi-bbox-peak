@@ -1,0 +1,50 @@
+---
+version: '3.7'
+
+services:
+  backend:
+    container_name: backend
+    build:
+      context: ./app
+      dockerfile: ./Dockerfiles/django/Dockerfile
+    restart: unless-stopped
+    command: /start
+    #volumes:
+      #- staticfiles:/app/static
+    env_file:
+      - ./env_docker
+    ports:
+      - "8000:8000"      
+    networks:
+      - network_web
+      - network_db
+    depends_on:
+      db:
+        condition: service_healthy
+  db:
+    container_name: db
+    image: postgis/postgis:15-3.3
+    restart: unless-stopped
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=mypassword
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - network_db
+volumes:
+  postgres_data:
+    name: postgres_data
+  staticfiles:
+    name: staticfiles
+  
+networks:
+  network_web:
+    name: network_web
+  network_db:
+    name: network_db

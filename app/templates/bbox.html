@@ -1,0 +1,49 @@
+
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+{% block content %}
+    <form  method="POST"  class="post-form"  action="/bbox">
+                    {%  csrf_token  %}
+
+            <div  class="container">
+    <br>
+            <div  class="form-group  row">
+            <div  class="col-sm-2">
+            <h3>Enter  bounding box coordinates (WGS84 with 6 decimals to be valid)</h3>
+            </div>
+        </div>
+            <div  class="form-group  row">
+            <label  class="col-sm-2  col-form-label">Min bounding box longitude:</label>
+            <div  class="col-sm-4">
+                {{  form.minlongitude  }}
+            </div>
+        </div>
+        <div  class="form-group  row">
+            <label  class="col-sm-2  col-form-label">Max bounding box longitude:</label>
+            <div  class="col-sm-4">
+                {{  form.maxlongitude  }}
+            </div>
+        </div>
+                 <div  class="form-group  row">
+            <label  class="col-sm-2  col-form-label">Min bounding box latitude:</label>
+            <div  class="col-sm-4">
+                {{  form.minlatitude  }}
+            </div>
+        </div>
+            <div  class="form-group  row">
+            <label  class="col-sm-2  col-form-label">Max bounding box latitude:</label>
+            <div  class="col-sm-4">
+                {{  form.maxlatitude  }}
+            </div>
+        </div>
+
+                <div  class="form-group  row">
+                                <div  class="col-sm-2"></div>
+
+            <div  class="col-sm-4">
+            <button  type="submit"  class="btn  btn-primary">Submit</button>
+            </div>
+        </div>
+            </div>
+    </form>
+{% endblock %}

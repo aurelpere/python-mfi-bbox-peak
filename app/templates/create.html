@@ -1,0 +1,48 @@
+
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+{% block content %}
+<form  method="POST"  class="post-form"  action="/create">
+                    {%  csrf_token  %}
+
+            <div  class="container">
+    <br>
+            <div  class="form-group  row">
+                <div  class="col-sm-2">
+            <h3>Enter  Details</h3>
+            </div>
+        </div>
+            <div  class="form-group  row">
+            <label  class="col-sm-2  col-form-label">Peak  Name:</label>
+            <div  class="col-sm-4">
+                {{  form.name  }}
+            </div>
+        </div>
+        <div  class="form-group  row">
+            <label  class="col-sm-2  col-form-label">Peak  altitude:</label>
+            <div  class="col-sm-4">
+                {{  form.altitude  }}
+            </div>
+        </div>
+                 <div  class="form-group  row">
+            <label  class="col-sm-2  col-form-label">Peak longitude (WGS84: max +180.0, min -180.0):</label>
+            <div  class="col-sm-4">
+                {{  form.longitude  }}
+            </div>
+        </div>
+            <div  class="form-group  row">
+            <label  class="col-sm-2  col-form-label">Peak latitude(WGS84: max +90.0, min -90.0):</label>
+            <div  class="col-sm-4">
+                {{  form.latitude  }}
+            </div>
+        </div>
+
+                <div  class="form-group  row">
+            <div  class="col-sm-2"></div>
+                    <div  class="col-sm-4">
+            <button  type="submit"  class="btn  btn-primary">Submit</button>
+            </div>
+        </div>
+            </div>
+    </form>
+{% endblock %}
