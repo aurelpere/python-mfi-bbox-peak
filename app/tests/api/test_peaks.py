@@ -3,7 +3,6 @@ from peak import models
 from geojson import Point
 from django.contrib.gis.geos import Point as GeosPoint
 from peak.models import Peak
-import requests
 @pytest.mark.django_db
 def test_peak_create():
     p = Peak(name='test',
