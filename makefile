@@ -10,7 +10,7 @@ lint:
 test:
 	docker-compose up -d
 	sleep 5
-	docker exec -it backend python -m pytest
+	docker exec -it backend -T python -m pytest
 	docker-compose stop
 	docker rm -f db
 	docker volume rm postgres_data
