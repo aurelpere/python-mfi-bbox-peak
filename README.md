@@ -1,3 +1,4 @@
+[![Test-Lint-Format](https://github.com/aurelpere/python-mfi-bbox-peak/actions/workflows/main.yml/badge.svg)](https://github.com/aurelpere/python-mfi-bbox-peak/actions/workflows/main.yml)
 
 # utilisation 
 <br>

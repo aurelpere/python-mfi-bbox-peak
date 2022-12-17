@@ -12,6 +12,4 @@ test:
 	sleep 5
 	docker exec -t backend python3 -m pytest
 	docker-compose stop
-	docker rm -f db
-	docker volume rm postgres_data
 all: install format lint test 
