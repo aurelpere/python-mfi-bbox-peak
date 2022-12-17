@@ -13,5 +13,5 @@ test:
 	docker exec -it backend python -m pytest
 	docker-compose stop
 	docker rm -f db
-	docker volume rm postgres_db
+	docker volume rm postgres_data
 all: install format lint test 

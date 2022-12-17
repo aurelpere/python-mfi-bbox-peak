@@ -102,7 +102,8 @@ def create(request):
     # return render(request,'create.html',{'form':form})
 def show(request):
     #peaks = Peak.objects.all() for direct query on the db
-    r = requests.get(request.build_absolute_uri(location=reverse('peak-list')),timeout=10).json()
+    r = requests.get(request.build_absolute_uri(location=reverse('peak-list')),
+                     timeout=10).json()
     print(r)
     print(type(r))
     return render(request, "show.html", {'peaks': r})

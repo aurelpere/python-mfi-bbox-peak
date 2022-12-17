@@ -3,20 +3,23 @@ from peak import models
 from geojson import Point
 from django.contrib.gis.geos import Point as GeosPoint
 from peak.models import Peak
+
+
 @pytest.mark.django_db
 def test_peak_create():
     p = Peak(name='test',
-                    altitude=4809,
-                    longitude=6.865175,
-                    latitude=45.832622,
-                    point="SRID=4326;POINT (6.865175 45.832622)")
+             altitude=4809,
+             longitude=6.865175,
+             latitude=45.832622,
+             point="SRID=4326;POINT (6.865175 45.832622)")
     p.save()
-    p=Peak.objects.all().first() # pylint: disable=E1101
+    p = Peak.objects.all().first()  # pylint: disable=E1101
     assert p.altitude == float("4809")
     assert p.longitude == float("6.865175")
     assert p.latitude == float("45.832622")
-    assert p.point.coords==GeosPoint(
-        (float(6.865175), float(45.832622))).coords
+    assert p.point.coords == GeosPoint( # pylint: disable=W0143
+        (float(6.865175), float(45.832622))).coords  # pylint: disable=W0143
+
 
 @pytest.mark.django_db
 def post_peak_1():
