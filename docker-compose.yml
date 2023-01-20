@@ -14,7 +14,7 @@ services:
     env_file:
       - ./env_docker
     ports:
-      - "8000:8000"      
+      - "80:8000"      
     networks:
       - network_web
       - network_db
